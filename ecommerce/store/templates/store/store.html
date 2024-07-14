@@ -2,15 +2,32 @@
 {% load static %}
 {% block content %}
 <div class="row">
-
     {% for product in products %}
+    <div class="col-sm-6 col-md-4 col-lg-3 gap-3 p-2">
+        <div class="card" style="width:100%;">
+            <img src="{{product.imageURL}}" class="card-img-top" alt="product image">
+            <!-- <img class="thumbnail" src="{% static 'images/placeholder.png' %}"> -->
+            <div class="card-body">
+                <h5 class="card-title">{{product.name}}</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's
+                    content.</p>
+                <div class="d-flex flex-row justify-content-between align-items-center">
+                    <span class="fw-semibold">${{product.price|floatformat:2}}</span>
+                    <button class="btn text-white rounded-pill add-btn update-cart" style="background-color: #136d4a;"
+                        data-product="{{product.id}}" data-action="add">Add to cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+    <!-- {% for product in products %}
     <div class="col-lg-4">
         <img class="thumbnail" src="{{product.imageURL}}">
-        <!-- <img class="thumbnail" src="{% static 'images/placeholder.png' %}"> -->
         <div class="box-element product">
             <h6><strong>{{product.name}}</strong></h6>
             <hr>
-
             <button data-product="{{product.id}}" data-action="add"
                 class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
             <a class="btn btn-outline-success" href="#">View</a>
@@ -18,7 +35,7 @@
 
         </div>
     </div>
-    {% endfor %}
+    {% endfor %} -->
 
 </div>
 {% endblock content %}

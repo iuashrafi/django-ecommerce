@@ -1,73 +1,88 @@
 {% extends 'store/main.html' %}
 {% load static %}
 {% block content %}
-<div class="row">
-    <div class="col-lg-6">
-        <div class="box-element" id="form-wrapper">
-            <form id="form">
-                <div id="user-info">
-                    <div class="form-field">
-                        <input required class="form-control" type="text" name="name" placeholder="Name..">
+<div class="row py-4">
+    <div class="col">
+        <div class="card" id="form-wrapper">
+            <div class="card-body">
+
+
+                <form id="form">
+                    <div id="user-info">
+                        <div class="form-field">
+                            <input required class="form-control" type="text" name="name" placeholder="Name..">
+                        </div>
+                        <div class="form-field">
+                            <input required class="form-control" type="email" name="email" placeholder="Email..">
+                        </div>
                     </div>
-                    <div class="form-field">
-                        <input required class="form-control" type="email" name="email" placeholder="Email..">
+
+                    <div id="shipping-info">
+
+                        <h4>Shipping Information:</h4>
+                        <hr>
+                        <div class="form-field">
+                            <input class="form-control" type="text" name="address" placeholder="Address..">
+                        </div>
+                        <div class="form-field">
+                            <input class="form-control" type="text" name="city" placeholder="City..">
+                        </div>
+                        <div class="form-field">
+                            <input class="form-control" type="text" name="state" placeholder="State..">
+                        </div>
+                        <div class="form-field">
+                            <input class="form-control" type="text" name="zipcode" placeholder="Zip code..">
+                        </div>
                     </div>
+                    <br />
+                    <input id="form-button" class="btn btn-success btn-block rounded-pill" type="submit"
+                        value="Continue" />
+                </form>
+
+                <div class="hidden" id="payment-info">
+                    <small>Paypal Options</small>
+                    <div id="paypal-button-container"></div>
+                    <button id="make-payment" class="btn btn-success rounded-pill">Make Payment</button>
                 </div>
 
-                <div id="shipping-info">
-                    <hr>
-                    <p>Shipping Information:</p>
-                    <hr>
-                    <div class="form-field">
-                        <input class="form-control" type="text" name="address" placeholder="Address..">
-                    </div>
-                    <div class="form-field">
-                        <input class="form-control" type="text" name="city" placeholder="City..">
-                    </div>
-                    <div class="form-field">
-                        <input class="form-control" type="text" name="state" placeholder="State..">
-                    </div>
-                    <div class="form-field">
-                        <input class="form-control" type="text" name="zipcode" placeholder="Zip code..">
-                    </div>
-                </div>
-                <hr>
-                <input id="form-button" class="btn btn-success btn-block" type="submit" value="Continue">
-            </form>
-        </div>
-
-        <br>
-        <div class="box-element hidden" id="payment-info">
-            <small>Paypal Options</small>
-            <div id="paypal-button-container"></div>
-            <!-- <button id="make-payment">Make Payment</button> -->
-        </div>
-    </div>
-
-    <div class="col-lg-6">
-        <div class="box-element">
-            <a class="btn btn-outline-dark" href="{% url 'cart' %}">&#x2190; Back to Cart</a>
-            <hr>
-            <h3>Order Summary</h3>
-            <hr>
-            {% for item in items %}
-            <div class="cart-row">
-                <div style="flex:2"><img class="row-image" src="{{item.product.imageURL}}"></div>
-                <div style="flex:2">
-                    <p>{{item.product.name}}</p>
-                </div>
-                <div style="flex:1">
-                    <p>${{item.product.price}}</p>
-                </div>
-                <div style="flex:1">
-                    <p>x{{item.quantity}}</p>
-                </div>
             </div>
-            {% endfor %}
-            <h5>Items: {{order.get_cart_items}}</h5>
-            <h5>Total: ${{order.get_cart_total|floatformat:2}}</h5>
+        </div>
+
+
+    </div>
+
+    <div class="col">
+        <div class="card">
+            <div class="card-body">
+
+                <a class="btn btn-outline-secondary rounded-pill mb-4" href="{% url 'cart' %}">&#x2190; Back to Cart</a>
+
+                <h4>Order Summary</h4>
+                <hr>
+                {% for item in items %}
+                <div class="cart-row">
+                    <div style="flex:2"><img class="row-image" src="{{item.product.imageURL}}"></div>
+                    <div style="flex:2">
+                        <p>{{item.product.name}}</p>
+                    </div>
+                    <div style="flex:1">
+                        <p>${{item.product.price}}</p>
+                    </div>
+                    <div style="flex:1">
+                        <p>x{{item.quantity}}</p>
+                    </div>
+                </div>
+                {% endfor %}
+
+                <h5>Total Items: {{order.get_cart_items}}</h5>
+                <h5>Total Cost: ${{order.get_cart_total|floatformat:2}}</h5>
+
+            </div>
         </div>
     </div>
+
+
+
 </div>
 <script
     src="https://www.paypal.com/sdk/js?client-id=ASnjMK3dzat_VDgsXxYIrFRzNF1_RWXS6d9ivrpWvTjcDHUElj9GB0OUd_waP47V6BHEWmI0JATa4yE2&currency=USD"></script>

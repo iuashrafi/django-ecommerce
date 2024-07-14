@@ -57,7 +57,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg  bg-dark" data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg bg-green" data-bs-theme="dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="{% url 'store' %}">Shoppy</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -72,20 +72,23 @@
                     </li>
                 </ul>
                 <div class="form-inline my-2 my-lg-0">
-                    <a href="#" class="btn btn-warning">Login</a>
-                    <a href="{% url 'cart' %}">
-                        <img id="cart-icon" src="{% static 'images/cart.png' %}">
+                    <a href="/admin" class="btn btn-warning rounded-pill text-secondary">Login</a>
+                    <a href="{% url 'cart' %}" class="px-2 text-white position-relative btn btn-">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                            class="bi bi-cart3" viewBox="0 0 16 16">
+                            <path
+                                d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l.84 4.479 9.144-.459L13.89 4zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
+                        </svg>
+                        <!-- <img id="cart-icon" src="{% static 'images/cart.png' %}"> -->
+                        <p class="position-absolute end-0   bottom-0 bg-danger rounded-circle">{{cartItems}}</p>
                     </a>
-                    <p id="cart-total">{{cartItems}}</p>
-
                 </div>
-
 
 
             </div>
         </div>
     </nav>
-    <div class="container">
+    <div class="container py-4">
         {% block content %}
         {% endblock content %}
     </div>

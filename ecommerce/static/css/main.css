@@ -11,6 +11,10 @@ h6 {
   color: hsl(0, 0%, 30%);
 }
 
+.bg-green {
+  background-color: #136d4a;
+}
+
 .box-element {
   box-shadow: hsl(0, 0%, 80%) 0 0 16px;
   background-color: #fff;
@@ -31,7 +35,12 @@ h6 {
 }
 
 .bg-dark {
-  background-color: #4f868c !important;
+  /* background-color: #4f868c !important; */
+  background-color: #149253 !important;
+}
+
+.bg-theme {
+  background-color: #149253 !important;
 }
 
 #cart-icon {
@@ -58,9 +67,9 @@ h6 {
   margin-top: 10px;
 }
 
-.btn {
+/* .btn {
   border-radius: 0;
-}
+} */
 
 .row-image {
   width: 100px;
